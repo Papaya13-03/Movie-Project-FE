@@ -17,7 +17,7 @@ const MovieDetailsPage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    let url = `movie-details/${movieId}`;
+    let url = `/movie-details/${movieId}`;
     getData({ url })
       .then((res) => {
         setData(res);
@@ -25,7 +25,7 @@ const MovieDetailsPage = () => {
       .catch((err) => {
         console.log(err);
       });
-    url = `credits/${movieId}`;
+    url = `/credits/${movieId}`;
     getData({ url })
       .then((res) => {
         setActors(res.cast);
@@ -33,7 +33,7 @@ const MovieDetailsPage = () => {
       .catch((err) => {
         console.log(err);
       });
-    url = `trailer/${movieId}`;
+    url = `/trailer/${movieId}`;
     getData({ url })
       .then((res) => {
         res.results.forEach((value) => {

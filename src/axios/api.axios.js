@@ -24,7 +24,8 @@ const axiosCall = async (url) => {
 const getData = async ({url,page}) => {
     if(!page) page = 1;
     let res = {};
-    const uri = `${process.env.REACT_APP_SERVER_URL}/api/${url}?page=${page}`;
+    if(url && url[0] != '/')url = '/' + url;
+    const uri = `${process.env.REACT_APP_SERVER_URL}/api${url}?page=${page}`;
     await axiosCall(uri)
         .then(data => {
             res = data;
