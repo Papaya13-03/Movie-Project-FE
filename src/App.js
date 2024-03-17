@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import RegisterPage from "./pages/RegisterPage/RegisterPage.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage.jsx";
+import MovieListPage from "./pages/MovieListPage/MovieListPage.jsx";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const [page, setPage] = useState(1);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/trending" element={<MovieListPage page={page} setPage={setPage} url="/trending/movie/day" title="Trending" />} />
+        <Route path="/now-playing" element={<MovieListPage page={page} setPage={setPage} url="/now-playing" title="Now Playing"/>} />
+        <Route path="/popular" element={<MovieListPage page={page} setPage={setPage} url="/popular" title="Popular"/>} />
+        <Route path="/top-rated" element={<MovieListPage page={page} setPage={setPage} url="/top-rated" title="Top Rated" />} />
+        <Route path="/upcoming" element={<MovieListPage page={page} setPage={setPage} url="/upcoming" title="Upcoming" />} />
+        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/register" element={<RegisterPage />}/>
+        <Route path="/movie/:movieId/details" element = {<MovieDetailsPage />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

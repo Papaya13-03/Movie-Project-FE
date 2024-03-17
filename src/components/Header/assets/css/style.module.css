@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Deca&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", Arial, sans-serif;
+}
+
+:root {
+    --height: 80px;   
+    --bg-color: #131313; 
+    /* --bg-color: #282626;  */
+}
+
+.wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: var(--height);
+    display: flex;
+    align-items: center;
+    color:white;
+    background-color: var(--bg-color);
+    padding: 0 80px;
+    justify-content: center;
+    z-index: 10;
+}
+
+.logo {
+    margin: 0 80px;
+    cursor: pointer;
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+}

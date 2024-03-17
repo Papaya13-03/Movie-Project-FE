@@ -1,0 +1,157 @@
+* {
+  --first-element-height: 600px;
+}
+
+.container {
+  color: white;
+  margin-top: var(--height);
+  background-color: #000;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wrap {
+  position: relative;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--first-element-height);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.backdrop::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--first-element-height);
+  background-color: rgba(0, 0, 0, 0.575);
+  z-index: 1;
+}
+
+.backdrop img {
+  object-fit: contain;
+}
+
+.details_wrap {
+  z-index: 2;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--first-element-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.no_image {
+  background-color: #ccc;
+}
+
+.poster,
+.poster img,
+.no_image {
+  width: 333px;
+  height: 500px;
+}
+
+.details {
+  height: 500px;
+}
+
+.caster {
+  padding: 20px;
+}
+
+.actors {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  place-items: center;
+}
+
+.view_all_caster {
+  width: 140px;
+  height: 265px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.view_all_caster:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 1440px) {
+  .actors {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+  * {
+    --first-element-height: 300px;
+  }
+
+  .actors {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .backdrop {
+    height: 300px;
+  }
+
+  .details_wrap {
+    display: block;
+    height: unset;
+  }
+
+  .poster,
+  .poster img,
+  .no_image {
+    object-fit: contain;
+    height: 400px;
+  }
+
+  .details {
+    height: unset;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .actors {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width:510px) {
+  .poster {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .details_wrap {
+    margin-top: 20px;
+  }
+
+  .actors {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

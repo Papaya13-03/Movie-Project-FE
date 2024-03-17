@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Deca&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", Arial, sans-serif;
+}
+
+.wrap {
+    background-color: black;
+    width: 100%;
+}
+
+.content {
+    position: relative;
+    margin-top: var(--height);
+    max-width: 1600px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+}
+
+@media screen and (max-width: 1599px) {
+    .content {
+        max-width: 1200px;
+    }
+}
+@media screen and (max-width: 1199px) {
+    .content {
+        max-width: 992px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .content {
+        max-width: 768px;
+        font-size: small;
+    }
+}
+@media screen and (max-width: 765px) {
+    .content {
+        max-width: 576px;
+        font-size: small;
+    }
+}
+@media screen and (max-width: 414px) {
+    .content {
+        max-width: 414px;
+        font-size: small;
+        padding-left: 10px;
+    }
+}

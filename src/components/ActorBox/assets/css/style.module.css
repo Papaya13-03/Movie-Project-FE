@@ -1,0 +1,43 @@
+.wrap {
+    position: relative;
+    width: 140px;
+    height: 265px;
+    border: 1px solid #ccc;
+    background-color: black;
+    margin: 10px;
+    border-radius: 7px;
+    overflow: hidden;
+    color: white;
+}
+
+.wrap .actor_img {
+    width: 138px;
+    height: 175px;
+    position: absolute;
+    object-fit: cover;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.wrap .actor_img_null {
+    width: 138px;
+    height: 175px;
+    position: absolute;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+}
+
+.name {
+    margin-left: 5px;
+    margin-top: 176px;
+    font-weight: 700;
+}
+.character {
+    margin-left: 5px;
+    margin-top: 10px;
+    font-weight: 300;
+}
