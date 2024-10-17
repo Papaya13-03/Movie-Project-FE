@@ -4,9 +4,6 @@ import style from "./assets/css/style.module.css";
 const Footer = () => {
   return (
     <div className={style.wrap}>
-      <div>
-        Develop by <b>Papaya</b>
-      </div>
       <div className={style.social_media}>
         <div className={style.element}>
           <a href="https://www.instagram.com/papaya.1303/">
