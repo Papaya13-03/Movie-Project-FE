@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import MovieSmallBox from "../MovieSmallBox/MovieSmallBox";
 import style from "./assets/css/style.module.css";
 import { getData } from "../../axios/api.axios";
+import MovieSmallBox from "../MovieSmallBox/MovieSmallBox";
 
 const ListMovie = ({ url, name, isCustomApi }) => {
   const [data, setData] = useState([]);
@@ -25,7 +25,7 @@ const ListMovie = ({ url, name, isCustomApi }) => {
         console.log(err);
       });
     }
-  }, [url]);
+  }, [url, isCustomApi]);
 
   return (
     <div className={style.container}>
