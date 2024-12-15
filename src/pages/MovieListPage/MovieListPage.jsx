@@ -70,11 +70,11 @@ const MovieListPage = ({ url, title, page, setPage }) => {
           </div>
           <div className={style.pagination}>
             <div className={style.page_changer} onClick={pageDecrease}>
-              {"<"}Prev
+              {"<"}
             </div>
             <div>Page: {page}</div>
             <div className={style.page_changer} onClick={pageIncrease}>
-              Next{">"}
+              {">"}
             </div>
           </div>
         </div>

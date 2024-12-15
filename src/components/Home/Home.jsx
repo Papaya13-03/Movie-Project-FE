@@ -6,6 +6,7 @@ const Home = () => {
 
   return (
     <div className={style.wrap}>
+      <ListMovie name = "recommend for you" url="/trending/movie/day" isCustomApi={false}/>
       <ListMovie name = "trending" url="/trending/movie/day" />
       <ListMovie name = "now playing" url="/now-playing" />
       <ListMovie name = "popular" url="/popular" />

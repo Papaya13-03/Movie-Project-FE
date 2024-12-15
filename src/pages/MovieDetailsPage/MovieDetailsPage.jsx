@@ -7,6 +7,7 @@ import { getData } from "../../axios/api.axios.js";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import ActorBox from "../../components/ActorBox/ActorBox.jsx";
 import TrailerModal from "../../components/TrailerModal/TrailerModal.jsx";
+import Comments from "../../components/Comment/Comment.jsx";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -105,6 +106,7 @@ const MovieDetailsPage = () => {
             <div className={style.view_all_caster}>View All &gt;</div>
           </div>
         </div>
+        <Comments movieId={movieId}/>
       </div>
       <Footer />
       {isPlayingTrailer && (

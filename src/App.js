@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage/RegisterPage.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage.jsx";
 import MovieListPage from "./pages/MovieListPage/MovieListPage.jsx";
-import { useState } from "react";
 
 const App = () => {
   const [page, setPage] = useState(1);

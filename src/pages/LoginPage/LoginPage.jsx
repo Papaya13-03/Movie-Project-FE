@@ -79,11 +79,6 @@ const LoginPage = () => {
             </a>
           </div>
         </form>
-        <div className={style.other}>
-          <span className={style.text}>Or Sign In With</span>
-          <button className={style.btn}>Facebook</button>
-          <button className={style.btn}>Twitter</button>
-        </div>
         <div className={style.redirect}>
           Don't have an account?<Link to="/register" >Sign up</Link>
         </div>

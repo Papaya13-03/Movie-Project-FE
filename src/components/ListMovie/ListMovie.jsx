@@ -3,17 +3,28 @@ import MovieSmallBox from "../MovieSmallBox/MovieSmallBox";
 import style from "./assets/css/style.module.css";
 import { getData } from "../../axios/api.axios";
 
-const ListMovie = ({ url, name }) => {
+const ListMovie = ({ url, name, isCustomApi }) => {
   const [data, setData] = useState([]);
+  
   useEffect(() => {
-
-    getData({url,page:1})
+    if(isCustomApi) {
+      fetch(`${process.env.REACT_APP_SERVER_URL}/favorite`, {
+        method: 'GET',
+      })
+        .then(response => response.json())
+        .then(res => {
+          setData(res);
+        })
+        .catch(error => console.error('Error', error));
+    } else {
+      getData({url,page:1})
       .then((res) => {
-        if(res.results)setData(res.results);
+        if(res.results) setData(res.results);
       })
       .catch((err) => {
         console.log(err);
       });
+    }
   }, [url]);
 
   return (

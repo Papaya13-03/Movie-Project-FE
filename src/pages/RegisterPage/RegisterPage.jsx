@@ -6,7 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 const RegisterPage = () => {
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [nickname, setNickname] = useState("");
@@ -20,7 +20,7 @@ const RegisterPage = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    signupHandler(username, password, confirmPassword, nickname)
+    signupHandler(email, password, confirmPassword, nickname)
       .then(res => {
         if(res.type === "error") {
           setErrMsg(res.msg);
@@ -48,10 +48,10 @@ const RegisterPage = () => {
           <input
             className={style.element}
             type="text"
-            name="username"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => inputChange(setUsername,e)}
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => inputChange(setEmail,e)}
             required
           />
           <input

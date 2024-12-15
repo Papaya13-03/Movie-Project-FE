@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    font-weight: 700;
+    font-size: 36px;  /* Large font size for primary headings */
+}
+
+h2 {
+    font-size: 30px;  /* Slightly smaller for secondary headings */
+}
+
+h3 {
+    font-size: 24px;  /* Smaller for tertiary headings */
+}
+
+h4 {
+    font-size: 20px;  /* And so on for smaller headings */
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 14px;
+}

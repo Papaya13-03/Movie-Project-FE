@@ -40,6 +40,9 @@ const Navbar = () => {
       </label>
       <ul ref={toggleNavbar} className={style.navbar}>
         <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
           <a href="/trending">Trending</a>
         </li>
         <li>
