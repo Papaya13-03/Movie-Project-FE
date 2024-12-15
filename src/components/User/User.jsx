@@ -23,8 +23,6 @@ const User = () => {
         <img src={avatarUrl} alt="avatar" />
       </div>
       <ul className={style.modal}>
-        <li>Favourites</li>
-        <li>Change Password</li>
         <li onClick={() => signOut()}>Sign out</li>
       </ul>
     </div>
