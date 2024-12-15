@@ -6,12 +6,12 @@ import { getData } from "../../axios/api.axios";
 import MovieSmallBox from "../../components/MovieSmallBox/MovieSmallBox";
 import Loader from "../../components/Loader/Loader";
 
-const MovieListPage = ({ url, title, page, setPage }) => {
+const MovieListPage = ({ url, title, page, setPage, isSearchResult }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const pageDecrease = () => {
-    if(page > 1) {
+    if (page > 1) {
       setPage(page - 1);
       window.scrollTo(0, 0);
       setLoading(true);
@@ -45,8 +45,8 @@ const MovieListPage = ({ url, title, page, setPage }) => {
 
   return (
     <>
-      <Header />
-      <Loader loading={loading}/>
+      {!isSearchResult && <Header />}
+      <Loader loading={loading} />
       {!loading && (
         <div className={style.container}>
           <div className={style.movie_wrap}>
@@ -79,7 +79,7 @@ const MovieListPage = ({ url, title, page, setPage }) => {
           </div>
         </div>
       )}
-      <Footer />
+      {!isSearchResult && <Footer />}
     </>
   );
 };

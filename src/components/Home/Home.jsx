@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import style from "./assets/css/style.module.css";
 import ListMovie from "../ListMovie/ListMovie.jsx";
 import MovieSmallBox from "../MovieSmallBox/MovieSmallBox";
@@ -8,20 +8,31 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
 
+  console.log(data);
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const handleSearch = (event) => {
-    if (event.key === 'Enter' && searchTerm.trim()) {
-      fetch(`${process.env.REACT_APP_SERVER_URL}/movies?search=${searchTerm}`, { method: 'GET' }).then(res => {
-        if (res.results) {
-          setData(res.results);
+    if (event.key === "Enter" && searchTerm.trim()) {
+      fetch(
+        `${process.env.REACT_APP_SERVER_URL}/api/movies?search=${searchTerm}`,
+        {
+          method: "GET",
         }
-      })
-      .catch(err => {
-        console.error("Error fetching search results:", err);
-      });
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          if (res.results) {
+            setData(res.results);
+          }
+        })
+        .catch((err) => {
+          console.error("Error fetching search results:", err);
+        });
     }
   };
 
@@ -44,30 +55,34 @@ const Home = () => {
         />
       </div>
       {searchTerm && data.length > 0 ? (
-       <div className={style2.container}>
-        <div className={style2.movie_wrap}>
-          {data.map((details, index) => {
-            return (
-              <MovieSmallBox
-                key={index}
-                imageUrl={
-                  details.poster_path
-                    ? "https://image.tmdb.org/t/p/original/" +
-                      details.poster_path
-                    : null
-                }
-                name={details.original_title}
-                date={details.release_date}
-                movieId={details.id}
-                rate={details.vote_average}
-              />
-            );
-          })}
+        <div className={`${style2.container} !w-full`}>
+          <div className={style2.movie_wrap}>
+            {data.map((details, index) => {
+              return (
+                <MovieSmallBox
+                  key={index}
+                  imageUrl={
+                    details.poster_path
+                      ? "https://image.tmdb.org/t/p/original/" +
+                        details.poster_path
+                      : null
+                  }
+                  name={details.original_title}
+                  date={details.release_date}
+                  movieId={details.id}
+                  rate={details.vote_average}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
       ) : (
         <>
-          <ListMovie name="recommend for you" url="/trending/movie/day" isCustomApi={false} />
+          <ListMovie
+            name="recommend for you"
+            url="/trending/movie/day"
+            isCustomApi={false}
+          />
           <ListMovie name="trending" url="/trending/movie/day" />
           <ListMovie name="now playing" url="/now-playing" />
           <ListMovie name="popular" url="/popular" />
@@ -77,6 +92,6 @@ const Home = () => {
       )}
     </div>
   );
-}
+};
 
 export default Home;
