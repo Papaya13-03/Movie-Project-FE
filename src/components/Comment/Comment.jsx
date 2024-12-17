@@ -67,6 +67,22 @@ function Comments({ movieId }) {
   return (
     <div className="mx-auto p-5 bg-gray-900 text-gray-200">
       <h1 className="text-3xl font-bold mb-4">Comments</h1>
+      <form onSubmit={handleSubmit} className="flex items-center gap-2">
+        <input
+          type="text"
+          value={commentInput}
+          onChange={handleCommentChange}
+          placeholder={token ? "Add a comment..." : "Login to send a comment"}
+          className="w-full p-2 bg-gray-800 border border-gray-700 text-white rounded-l-md outline-none"
+          disabled={!token}
+        />
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-r-md"
+        >
+          Submit
+        </button>
+      </form>
       <div className="space-y-4 mb-6">
         {comments.map((comment) => (
           <div key={comment.id} className="flex items-start space-x-3">
@@ -85,22 +101,6 @@ function Comments({ movieId }) {
           </div>
         ))}
       </div>
-      <form onSubmit={handleSubmit} className="flex items-center gap-2">
-        <input
-          type="text"
-          value={commentInput}
-          onChange={handleCommentChange}
-          placeholder={token ? "Add a comment..." : "Login to send a comment"}
-          className="w-full p-2 bg-gray-800 border border-gray-700 text-white rounded-l-md outline-none"
-          disabled={!token}
-        />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-r-md"
-        >
-          Submit
-        </button>
-      </form>
     </div>
   );
 }
