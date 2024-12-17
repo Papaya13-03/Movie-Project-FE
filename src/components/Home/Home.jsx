@@ -3,10 +3,12 @@ import style from "./assets/css/style.module.css";
 import ListMovie from "../ListMovie/ListMovie.jsx";
 import MovieSmallBox from "../MovieSmallBox/MovieSmallBox";
 import style2 from "../../pages/MovieListPage/assets/css/style.module.css";
+import { getToken } from "../../handler/token.handler.js";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
+  const token = getToken();
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -81,6 +83,13 @@ const Home = () => {
             url="/trending/movie/day"
             isCustomApi={false}
           />
+          {!!token && (
+            <ListMovie
+              name="Favourite"
+              url="/trending/movie/day"
+              isCustomApi={true}
+            />
+          )}
           <ListMovie name="trending" url="/trending/movie/day" />
           <ListMovie name="now playing" url="/now-playing" />
           <ListMovie name="popular" url="/popular" />
