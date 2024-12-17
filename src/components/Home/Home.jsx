@@ -78,11 +78,6 @@ const Home = () => {
         </div>
       ) : (
         <>
-          <ListMovie
-            name="recommend for you"
-            url="/trending/movie/day"
-            isCustomApi={false}
-          />
           {!!token && (
             <ListMovie
               name="Favourite"
