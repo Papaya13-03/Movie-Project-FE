@@ -1,8 +1,37 @@
-import React from "react";
 import style from "./assets/css/style.module.css";
+import { getToken } from "../../handler/token.handler.js";
+import React, { useState, useEffect } from "react";
 
 const MovieDetails = ({ data, trailerId, setIsPlayingTrailer }) => {
-  // const [isFavouriteMovie, setIsFavouriteMovie] = useGetFavouriteMovie
+  const [isFavouriteMovie, setIsFavouriteMovie] = useState(false);
+
+  console.log(data);
+
+  const toggleFavourite = () => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/favourite/${data.id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getToken()}`,
+      },
+    }).then(() => {
+      setIsFavouriteMovie((last) => !last);
+    });
+  };
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/favourite/${data.id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setIsFavouriteMovie(!!res);
+      });
+  }, [data.id]);
 
   const convertTime = (val) => {
     const hour = parseInt(val / 60);
@@ -44,7 +73,12 @@ const MovieDetails = ({ data, trailerId, setIsPlayingTrailer }) => {
               <i className="fa-solid fa-play"></i>
               Play Trailer
             </div>
-            <button className={`${style.favourite}`}>
+            <button
+              className={`${style.favourite} ${
+                isFavouriteMovie && "text-red-500"
+              }`}
+              onClick={toggleFavourite}
+            >
               <i className="fa-solid fa-heart"></i>
               Add to favourite
             </button>
