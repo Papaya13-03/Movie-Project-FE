@@ -5,6 +5,7 @@ function Comments({ movieId }) {
   const [comments, setComments] = useState([]);
   const [commentInput, setCommentInput] = useState("");
   const [userName, setUserName] = useState("");
+  const token = getToken();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/comments/${movieId}`, {
@@ -15,7 +16,9 @@ function Comments({ movieId }) {
       },
     })
       .then((response) => response.json())
-      .then((data) => setComments(data.slice(0, 10)))
+      .then((data) => {
+        if (token) setComments(data.slice(0, 10));
+      })
       .catch((error) => console.error("Error fetching comments:", error));
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/user`, {
@@ -86,8 +89,9 @@ function Comments({ movieId }) {
           type="text"
           value={commentInput}
           onChange={handleCommentChange}
-          placeholder="Add a comment..."
+          placeholder={token ? "Add a comment...": "Login to send a comment"}
           className="w-full p-2 bg-gray-800 border border-gray-700 text-white rounded-l-md outline-none"
+          disabled={!token}
         />
         <button
           type="submit"
