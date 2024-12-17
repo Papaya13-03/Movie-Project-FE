@@ -67,7 +67,7 @@ function Comments({ movieId }) {
   return (
     <div className="mx-auto p-5 bg-gray-900 text-gray-200">
       <h1 className="text-3xl font-bold mb-4">Comments</h1>
-      <form onSubmit={handleSubmit} className="flex items-center gap-2">
+      <form onSubmit={handleSubmit} className="flex items-center gap-2 mb-6">
         <input
           type="text"
           value={commentInput}
@@ -83,7 +83,7 @@ function Comments({ movieId }) {
           Submit
         </button>
       </form>
-      <div className="space-y-4 mb-6">
+      <div className="space-y-4">
         {comments.map((comment) => (
           <div key={comment.id} className="flex items-start space-x-3">
             <svg
