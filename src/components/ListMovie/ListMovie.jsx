@@ -40,29 +40,30 @@ const ListMovie = ({ url, name, isCustomApi }) => {
     }
   }, [url, isCustomApi]);
 
-  return (
-    <div className={style.container}>
-      <h1 className={style.header}> {name}</h1>
+  if (data.length)
+    return (
+      <div className={style.container}>
+        <h1 className={style.header}> {name}</h1>
 
-      <div className={style.wrap}>
-        {data &&
-          data.map((val, index) => {
-            return (
-              <MovieSmallBox
-                key={index}
-                imageUrl={
-                  "https://image.tmdb.org/t/p/original/" + val.poster_path
-                }
-                name={val.original_title}
-                date={val.release_date}
-                movieId={val.id}
-                rate={val.vote_average}
-              />
-            );
-          })}
+        <div className={style.wrap}>
+          {data &&
+            data.map((val, index) => {
+              return (
+                <MovieSmallBox
+                  key={index}
+                  imageUrl={
+                    "https://image.tmdb.org/t/p/original/" + val.poster_path
+                  }
+                  name={val.original_title}
+                  date={val.release_date}
+                  movieId={val.id}
+                  rate={val.vote_average}
+                />
+              );
+            })}
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default ListMovie;
