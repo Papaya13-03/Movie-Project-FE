@@ -29,7 +29,12 @@ const MovieDetails = ({ data, trailerId, setIsPlayingTrailer }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setIsFavouriteMovie(!!res);
+        if (res.msg !== "Unauthorized!") {
+          setIsFavouriteMovie(!!res);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, [data.id]);
 
