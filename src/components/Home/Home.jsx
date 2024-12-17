@@ -8,8 +8,6 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
 
-  console.log(data);
-
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
