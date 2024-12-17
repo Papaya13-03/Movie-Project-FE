@@ -17,6 +17,7 @@ function Comments({ movieId }) {
     })
       .then((response) => response.json())
       .then((data) => {
+        data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
         if (token) setComments(data.slice(0, 10));
       })
       .catch((error) => console.error("Error fetching comments:", error));
@@ -89,7 +90,7 @@ function Comments({ movieId }) {
           type="text"
           value={commentInput}
           onChange={handleCommentChange}
-          placeholder={token ? "Add a comment...": "Login to send a comment"}
+          placeholder={token ? "Add a comment..." : "Login to send a comment"}
           className="w-full p-2 bg-gray-800 border border-gray-700 text-white rounded-l-md outline-none"
           disabled={!token}
         />
