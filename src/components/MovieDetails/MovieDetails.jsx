@@ -14,9 +14,13 @@ const MovieDetails = ({ data, trailerId, setIsPlayingTrailer }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getToken()}`,
       },
-    }).then(() => {
-      setIsFavouriteMovie((last) => !last);
-    });
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res?.msg !== "Unauthorized!") {
+          setIsFavouriteMovie((last) => !last);
+        }
+      });
   };
 
   useEffect(() => {
